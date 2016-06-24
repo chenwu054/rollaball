@@ -27,6 +27,11 @@ public class PlayerController : MonoBehaviour {
 		Vector3 v3 = new Vector3 (moveHorizontal, 0.0f, moveVertical);
 
 		rb.AddForce (v3 * speed);
-	
+	}
+	// inactivate the pickup if it trigger collides with the sphere
+	void OnTriggerEnter(Collider other) {
+		if(other.gameObject.CompareTag("Pick Up")) {
+			other.gameObject.SetActive (false);
+		}
 	}
 }
